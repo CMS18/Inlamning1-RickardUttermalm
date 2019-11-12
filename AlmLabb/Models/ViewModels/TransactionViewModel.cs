@@ -15,6 +15,7 @@ namespace AlmLabb.Models.ViewModels
         [Range(0.001, (double)decimal.MaxValue)]
         public decimal Amount { get; set; }
 
+        public List<string> Errors { get; set; }
 
     }
 }
