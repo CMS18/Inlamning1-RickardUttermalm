@@ -1,16 +1,24 @@
 ﻿@model AlmLabb.Models.ViewModels.StartPageVievModel
 
     <div>
-        @foreach (var item in Model.Data)
-        {
-            <p>@item.FullName</p>
-        }
+        <table class="table">
+            <tr>
+                <th>Kundnummer</th>
+                <th>Namn</th>
+                <th>Kontonummer</th>
+                <th>Saldo</th>
+            </tr>
+            @foreach (var item in Model.Data)
+            {
+                <tr>
+                    <td>@item.CustomerID</td>
+                    <td>@item.FullName</td>
+                    <td>@item.Account.AccountID</td>
+                    <td>@item.Account.Balance kr</td>
+                </tr>
+            }
+        </table>
     </div>
-    <div>
-        <form action="Home/Index" method="post">
-            <input type="text" name="data"/>
-            <button type="submit">Add</button>
-        </form>
-    </div>
+
 
 

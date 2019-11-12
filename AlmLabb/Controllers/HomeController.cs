@@ -23,12 +23,5 @@ namespace AlmLabb.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult Index(string data)
-        {
-            //_context.Data.Add(data);
-
-            return RedirectToAction("Index");
-        }
     }
 }
