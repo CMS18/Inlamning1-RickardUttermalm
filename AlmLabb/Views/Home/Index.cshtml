@@ -1,0 +1,16 @@
+﻿@model AlmLabb.Models.ViewModels.StartPageVievModel
+
+    <div>
+        @foreach (var item in Model.Data)
+        {
+            <p>@item.FullName</p>
+        }
+    </div>
+    <div>
+        <form action="Home/Index" method="post">
+            <input type="text" name="data"/>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+

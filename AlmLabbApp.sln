@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlmLabb", "AlmLabb\AlmLabb.csproj", "{1860404E-391A-40A6-8AAE-63F1F5208391}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlmLabb.Tests", "AlmLabb.Tests\AlmLabb.Tests.csproj", "{51981503-F7EC-4A94-8B30-0641EF88DD83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1860404E-391A-40A6-8AAE-63F1F5208391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1860404E-391A-40A6-8AAE-63F1F5208391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1860404E-391A-40A6-8AAE-63F1F5208391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1860404E-391A-40A6-8AAE-63F1F5208391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51981503-F7EC-4A94-8B30-0641EF88DD83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51981503-F7EC-4A94-8B30-0641EF88DD83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51981503-F7EC-4A94-8B30-0641EF88DD83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51981503-F7EC-4A94-8B30-0641EF88DD83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E681E048-EFCC-44ED-ACA6-0B3E8096CE5E}
+	EndGlobalSection
+EndGlobal
