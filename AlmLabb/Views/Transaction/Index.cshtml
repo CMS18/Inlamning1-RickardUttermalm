@@ -1,0 +1,37 @@
+﻿@model AlmLabb.Models.ViewModels.TransactionViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Transactions</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateTransaction">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <select asp-for="TransactionType" class="form-control">
+                    <option name="Deposit" value="Deposit">Deposit</option>
+                    <option name="Whitdraw" value="Whitdraw">Whitdraw</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountID" class="control-label"></label>
+                <input asp-for="AccountID" class="form-control" />
+                <span asp-validation-for="AccountID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Deposit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
