@@ -68,9 +68,4 @@ namespace AlmLabb.Business
         }
     }
 
-    public interface ITransactionHandler
-    {
-        TransactionResult Handle(TransactionViewModel transaction);
-        
-    }
 }
