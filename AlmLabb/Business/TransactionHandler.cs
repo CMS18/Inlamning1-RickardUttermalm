@@ -40,7 +40,8 @@ namespace AlmLabb.Business
                 if (item.AccountID == model.AccountID)
                 {
                     item.Balance += model.Amount;
-                    return new TransactionResult(true, model.Amount + " was deposited into Account " + item.AccountID);
+                    return new TransactionResult(true, model.Amount + " was deposited into Account " + 
+                                                item.AccountID + ", Balance is now " + item.Balance);
                 }
             }
 
@@ -59,7 +60,8 @@ namespace AlmLabb.Business
                     }
                     item.Balance -= model.Amount;
 
-                    return new TransactionResult(true, model.Amount + " was withdrawed from Account " + item.AccountID);
+                    return new TransactionResult(true, model.Amount + " was withdrawed from Account " + 
+                                                       item.AccountID + ", Balance is now " + item.Balance);
                 }
             }
             return new TransactionResult(false, "Something went wrong :(");

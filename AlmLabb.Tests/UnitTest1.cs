@@ -12,7 +12,8 @@ namespace AlmLabb.Tests
         [InlineData(-100, "Deposit")]
         [InlineData(-100, "Withdraw")]
         [InlineData(0, "Withdraw")]
-        public async Task TransactionHandlerTests(decimal amount, string type)
+        [InlineData(10000, "Withdraw")]
+        public async Task TransactionHandlerTests_Errors(decimal amount, string type)
         {
             var Repo = new MockDb();
             var _handler = new TransactionHandler(Repo);
@@ -27,6 +28,26 @@ namespace AlmLabb.Tests
             var expected = 100;
 
             Assert.False(result.IsSuccessful);
+            Assert.Equal(expected, Repo.Accounts[0].Balance);
+        }
+
+        [Theory]
+        [InlineData(100, "Deposit")]
+        public async Task TransactionHandlerTests_Successes(decimal amount, string type)
+        {
+            var Repo = new MockDb();
+            var _handler = new TransactionHandler(Repo);
+
+            var transaction = new TransactionViewModel();
+            transaction.AccountID = 1;
+            transaction.Amount = amount;
+            transaction.TransactionType = type;
+
+            var result = _handler.Handle(transaction);
+
+            var expected = 200;
+
+            Assert.True(result.IsSuccessful);
             Assert.Equal(expected, Repo.Accounts[0].Balance);
         }
 
