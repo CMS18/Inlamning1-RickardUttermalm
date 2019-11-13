@@ -15,7 +15,23 @@ namespace AlmLabb.Models.ViewModels
         [Range(0.001, (double)decimal.MaxValue)]
         public decimal Amount { get; set; }
 
-        public List<string> Errors { get; set; }
+        public TransactionResult Result { get; set; } 
 
+    }
+
+    public class TransactionResult
+    {
+        public bool IsSuccessful { get; set; }
+        public string Message { get; set; }
+
+        public TransactionResult()
+        {
+
+        }
+        public TransactionResult(bool success, string message)
+        {
+            IsSuccessful = success;
+            Message = message;
+        }
     }
 }

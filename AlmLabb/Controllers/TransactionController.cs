@@ -11,33 +11,25 @@ namespace AlmLabb.Controllers
 {
     public class TransactionController : Controller
     {
-        private IMockDb _context;
-        public TransactionController(IMockDb context)
+        private ITransactionHandler _handler;
+        public TransactionController(ITransactionHandler handler)
         {
-            _context = context;
+            _handler = handler;
         }
         public IActionResult Index()
         {
-            return View();
+            return View(new TransactionViewModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateTransaction(TransactionViewModel model)
+        public IActionResult CreateTransaction(TransactionViewModel transaction)
         {
             if (ModelState.IsValid)
             {
-                var handler = new TransactionHandler(_context);
-                if (model.TransactionType == "Deposit")
-                {
-                    handler.Deposit(model);
-                }
-                else if (model.TransactionType == "Withdraw")
-                {
-
-                }
+                transaction.Result = _handler.Handle(transaction);
             }
-            return View("Index", model);
+            return View("Index", transaction);
         }
-    }
+    }   
 }

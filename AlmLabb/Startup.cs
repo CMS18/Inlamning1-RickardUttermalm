@@ -21,6 +21,7 @@ namespace AlmLabb
         {
             services.AddControllersWithViews();
             services.AddSingleton(typeof(IMockDb), typeof(MockDb));
+            services.AddScoped(typeof(ITransactionHandler), typeof(TransactionHandler));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

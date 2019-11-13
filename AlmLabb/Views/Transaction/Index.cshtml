@@ -5,8 +5,22 @@
 }
 
 <h1>Transactions</h1>
-
 <hr />
+@if (Model.Result != null)
+{
+    if (Model.Result.IsSuccessful)
+    {
+        <div class="alert alert-success" role="alert">
+            <p>@Model.Result.Message</p>
+        </div>
+    }
+    else if (!Model.Result.IsSuccessful)
+    {
+        <div class="alert alert-danger" role="alert">
+            <p>@Model.Result.Message</p>
+        </div>
+    }
+}
 <div class="row">
     <div class="col-md-4">
         <form asp-action="CreateTransaction">
@@ -14,7 +28,7 @@
             <div class="form-group">
                 <select asp-for="TransactionType" class="form-control">
                     <option name="Deposit" value="Deposit">Deposit</option>
-                    <option name="Whitdraw" value="Whitdraw">Whitdraw</option>
+                    <option name="Whitdraw" value="Withdraw">Withdraw</option>
                 </select>
             </div>
             <div class="form-group">
@@ -28,7 +42,7 @@
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Deposit" class="btn btn-primary" />
+                <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
         </form>
     </div>
