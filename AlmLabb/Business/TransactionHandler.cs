@@ -1,4 +1,5 @@
 ﻿using AlmLabb.Business.Interfaces;
+using AlmLabb.Exceptions;
 using AlmLabb.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace AlmLabb.Business
             else if (transaction.TransactionType == "Withdraw")
             {
                 var result = this.Withdraw(transaction);
-                return result;   
+                return result;
             }
             return new TransactionResult(false, "Something went wrong :(");
         }
@@ -40,12 +41,12 @@ namespace AlmLabb.Business
                 if (item.AccountID == model.AccountID)
                 {
                     item.Balance += model.Amount;
-                    return new TransactionResult(true, model.Amount + " was deposited into Account " + 
+                    return new TransactionResult(true, model.Amount + " was deposited into Account " +
                                                 item.AccountID + ", Balance is now " + item.Balance);
                 }
             }
 
-            return new TransactionResult(false,"Accountnumber is not valid.");
+            return new TransactionResult(false, "Accountnumber is not valid.");
         }
 
         private TransactionResult Withdraw(TransactionViewModel model)
@@ -60,12 +61,13 @@ namespace AlmLabb.Business
                     }
                     item.Balance -= model.Amount;
 
-                    return new TransactionResult(true, model.Amount + " was withdrawed from Account " + 
+                    return new TransactionResult(true, model.Amount + " was withdrawed from Account " +
                                                        item.AccountID + ", Balance is now " + item.Balance);
                 }
             }
             return new TransactionResult(false, "Something went wrong :(");
         }
+
     }
 
 }
