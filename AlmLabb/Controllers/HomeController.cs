@@ -11,7 +11,7 @@ namespace AlmLabb.Controllers
 {
     public class HomeController : Controller
     {
-        private IMockDb _context;
+        private readonly IMockDb _context;
         public HomeController(IMockDb context)
         {
             _context = context;
