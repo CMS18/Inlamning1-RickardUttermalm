@@ -9,6 +9,6 @@ namespace AlmLabb.Business.Interfaces
     public interface ITransactionHandler
     {
         TransactionResult Handle(TransactionViewModel transaction);
-
+        TransactionResult Transfer(int fromAccountId, int toAccountId, decimal amount);
     }
 }

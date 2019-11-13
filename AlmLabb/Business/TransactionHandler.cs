@@ -1,4 +1,5 @@
 ﻿using AlmLabb.Business.Interfaces;
+using AlmLabb.Exceptions;
 using AlmLabb.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace AlmLabb.Business
             else if (transaction.TransactionType == "Withdraw")
             {
                 var result = this.Withdraw(transaction);
-                return result;   
+                return result;
             }
             return new TransactionResult(false, "Something went wrong :(");
         }
@@ -40,12 +41,12 @@ namespace AlmLabb.Business
                 if (item.AccountID == model.AccountID)
                 {
                     item.Balance += model.Amount;
-                    return new TransactionResult(true, model.Amount + " was deposited into Account " + 
+                    return new TransactionResult(true, model.Amount + " was deposited into Account " +
                                                 item.AccountID + ", Balance is now " + item.Balance);
                 }
             }
 
-            return new TransactionResult(false,"Accountnumber is not valid.");
+            return new TransactionResult(false, "Accountnumber is not valid.");
         }
 
         private TransactionResult Withdraw(TransactionViewModel model)
@@ -60,11 +61,41 @@ namespace AlmLabb.Business
                     }
                     item.Balance -= model.Amount;
 
-                    return new TransactionResult(true, model.Amount + " was withdrawed from Account " + 
+                    return new TransactionResult(true, model.Amount + " was withdrawed from Account " +
                                                        item.AccountID + ", Balance is now " + item.Balance);
                 }
             }
             return new TransactionResult(false, "Something went wrong :(");
+        }
+
+        public TransactionResult Transfer(int fromId, int toId, decimal amount)
+        {
+            try
+            {
+                var fromAccount = _context.Accounts.First(a => a.AccountID == fromId);
+                var toAccount = _context.Accounts.First(a => a.AccountID == fromId);
+
+                return Transfer(fromAccount, toAccount, amount);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return new TransactionResult(false, "Could not find the account! --- " + ex.Message);
+            }
+        }
+
+        public TransactionResult Transfer(Account from, Account to, decimal amount)
+        {
+            try
+            {
+                from.Debit(amount);
+            }
+            catch (InvalidTransactionException)
+            {
+                return new TransactionResult(false, "Not enough money on sending account!");
+            }
+
+            to.Credit(amount);
+            return new TransactionResult(true, $"Transfer of {amount} from account #{from.AccountID} to #{to.AccountID} was successful!");
         }
     }
 

@@ -1,4 +1,5 @@
 ﻿using AlmLabb.Business.Interfaces;
+using AlmLabb.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,10 +30,6 @@ namespace AlmLabb.Business
         }
 
 
-        public void Transfer(Account from, Account to)
-        {
-
-        }
 
     }
 
@@ -61,7 +58,7 @@ namespace AlmLabb.Business
         {
             if (Balance < amount)
             {
-throw new e
+                throw new InvalidTransactionException();
             }
             Balance -= amount;
 
