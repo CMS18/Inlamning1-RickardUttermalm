@@ -8,8 +8,8 @@ namespace AlmLabb.Business
 {
     public class MockDb : IMockDb
     {
-        public List<Customer> Customers {get; set;}
-        public List<Account> Accounts {get; set;}
+        public List<Customer> Customers { get; set; }
+        public List<Account> Accounts { get; set; }
         public MockDb()
         {
             Accounts = new List<Account>
@@ -27,6 +27,13 @@ namespace AlmLabb.Business
             };
 
         }
+
+
+        public void Transfer(Account from, Account to)
+        {
+
+        }
+
     }
 
     public class Customer
@@ -44,5 +51,20 @@ namespace AlmLabb.Business
         public decimal Balance { get; set; }
         public int AccountID { get; set; }
         public int CustomerID { get; set; }
+
+        public void Credit(decimal amount)
+        {
+            Balance += amount;
+        }
+
+        public void Debit(decimal amount)
+        {
+            if (Balance < amount)
+            {
+throw new e
+            }
+            Balance -= amount;
+
+        }
     }
 }
