@@ -13,7 +13,7 @@ namespace AlmLabb.Tests
         [InlineData(-100, "Withdraw")]
         [InlineData(0, "Withdraw")]
         [InlineData(10000, "Withdraw")]
-        public async Task TransactionHandlerTests_Errors(decimal amount, string type)
+        public void TransactionHandlerTests_Errors(decimal amount, string type)
         {
             var Repo = new MockDb();
             var _handler = new TransactionHandler(Repo);
@@ -33,7 +33,7 @@ namespace AlmLabb.Tests
 
         [Theory]
         [InlineData(100, "Deposit")]
-        public async Task TransactionHandlerTests_Successes(decimal amount, string type)
+        public void TransactionHandlerTests_Successes(decimal amount, string type)
         {
             var Repo = new MockDb();
             var _handler = new TransactionHandler(Repo);

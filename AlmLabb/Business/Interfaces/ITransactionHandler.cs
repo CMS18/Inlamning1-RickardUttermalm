@@ -9,6 +9,5 @@ namespace AlmLabb.Business.Interfaces
     public interface ITransactionHandler
     {
         TransactionResult Handle(TransactionViewModel transaction);
-
     }
 }
