@@ -11,7 +11,7 @@ namespace AlmLabb.Controllers
 {
     public class HomeController : Controller
     {
-        private IMockDb _context;
+        private readonly IMockDb _context;
         public HomeController(IMockDb context)
         {
             _context = context;
@@ -23,12 +23,5 @@ namespace AlmLabb.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult Index(string data)
-        {
-            //_context.Data.Add(data);
-
-            return RedirectToAction("Index");
-        }
     }
 }

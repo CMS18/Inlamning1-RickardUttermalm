@@ -21,9 +21,9 @@ namespace AlmLabb.Business
 
             Customers = new List<Customer>
             {
-                new Customer(){FirstName = "Sven", LastName = "Svensson", CustomerID = 1},
-                new Customer(){FirstName = "Erik", LastName = "Eriksson", CustomerID = 2},
-                new Customer(){FirstName = "Lars", LastName = "Larsson", CustomerID = 3}
+                new Customer(){FirstName = "Sven", LastName = "Svensson", CustomerID = 1, Account = Accounts[0]},
+                new Customer(){FirstName = "Erik", LastName = "Eriksson", CustomerID = 2, Account = Accounts[1]},
+                new Customer(){FirstName = "Lars", LastName = "Larsson", CustomerID = 3, Account = Accounts[2]}
             };
 
         }
@@ -36,6 +36,8 @@ namespace AlmLabb.Business
         public string FullName { get => this.FirstName + " " + this.LastName; }
 
         public int CustomerID { get; set; }
+
+        public virtual Account Account { get; set; }
     }
     public class Account
     {
