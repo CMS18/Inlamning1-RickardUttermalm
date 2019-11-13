@@ -68,35 +68,6 @@ namespace AlmLabb.Business
             return new TransactionResult(false, "Something went wrong :(");
         }
 
-        public TransactionResult Transfer(int fromId, int toId, decimal amount)
-        {
-            try
-            {
-                var fromAccount = _context.Accounts.First(a => a.AccountID == fromId);
-                var toAccount = _context.Accounts.First(a => a.AccountID == fromId);
-
-                return Transfer(fromAccount, toAccount, amount);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return new TransactionResult(false, "Could not find the account! --- " + ex.Message);
-            }
-        }
-
-        public TransactionResult Transfer(Account from, Account to, decimal amount)
-        {
-            try
-            {
-                from.Debit(amount);
-            }
-            catch (InvalidTransactionException)
-            {
-                return new TransactionResult(false, "Not enough money on sending account!");
-            }
-
-            to.Credit(amount);
-            return new TransactionResult(true, $"Transfer of {amount} from account #{from.AccountID} to #{to.AccountID} was successful!");
-        }
     }
 
 }

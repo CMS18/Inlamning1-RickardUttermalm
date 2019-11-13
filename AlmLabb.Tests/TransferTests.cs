@@ -21,7 +21,7 @@ namespace AlmLabb.Tests
         public void VerifyCorrectBalanceAfterTransfer(decimal fromBalance, decimal toBalance, decimal amount)
         {
             var db = new MockDb();
-            var transactionHandler = new TransactionHandler(db);
+            var transactionHandler = new TransferHandler(db);
 
             var fromAccount = new Account() { Balance = fromBalance };
             var toAccount = new Account() { Balance = toBalance };
@@ -42,7 +42,7 @@ namespace AlmLabb.Tests
         public void ShouldntBeAbleToWithdrawMoreThanBalanceYo(decimal fromBalance, decimal toBalance, decimal amount)
         {
             var db = new MockDb();
-            var transactionHandler = new TransactionHandler(db);
+            var transactionHandler = new TransferHandler(db);
 
             var fromAccount = new Account() { Balance = fromBalance };
             var toAccount = new Account() { Balance = toBalance };
